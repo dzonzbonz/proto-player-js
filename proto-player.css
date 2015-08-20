@@ -1,0 +1,28 @@
+.proto-player-overlay .proto-dialog-content {
+    padding: 0; margin: 0; top: 0; bottom: 0; right: 45px; border: none;
+}
+
+.proto-player-overlay .proto-dialog-title,
+.proto-player-overlay .proto-dialog-actions {
+    display: none;
+}
+
+.proto-player-overlay .proto-dialog-close,
+.proto-player-overlay .proto-dialog-close:after {
+    background-color: #000; color: #fff;
+}
+
+.proto-player-overlay .proto-dialog-inner {
+    background-color: #000;
+}
+
+.proto-player-overlay .video-container {
+     position: relative; 
+     padding-bottom: 0; 
+     padding-top: 0; height: 100%; overflow: hidden;
+}
+
+.proto-player-overlay .proto-player,
+.proto-player-overlay .proto-player-inner {
+    height: 100%;
+}

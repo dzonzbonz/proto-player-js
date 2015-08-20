@@ -1,5 +1,5 @@
 /**
- * jQuery jsPlayer
+ * jQuery protoPlayer
  * @author dzonz
  */
 (function($) {
@@ -25,7 +25,7 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'video-player-vimeo'));
     
-    $.fn.jsPlayerAdapters = function() {
+    $.fn.protoPlayerAdapters = function() {
 
     };
 
@@ -51,10 +51,6 @@
         };
         this.play = function() {
         };
-    };
-// MP4Player
-    var MP4Player = function() {
-        
     };
     
 // YOUTUBE
@@ -137,8 +133,8 @@
     };
 
     var _decodePlayer = function(video) {
-        for (var playerKey in $.fn.jsPlayer.players) {
-            var playerObject = new $.fn.jsPlayer.players[playerKey];
+        for (var playerKey in $.fn.protoPlayer.players) {
+            var playerObject = new $.fn.protoPlayer.players[playerKey];
             if (playerObject.validate(video)) {
                 return playerObject;
             }
@@ -209,7 +205,7 @@
 
         $target.jsDialog({
             onInit: function($dialog) {
-                $dialog.addClass('js-player-overlay');
+                $dialog.addClass('proto-player-overlay');
                 _instance.onInit.call($target, $dialog, _instance)
             },
             onOpen: function($dialog) {
@@ -225,7 +221,7 @@
                 _instance.onClosed.call($target, $dialog, _instance)
             },
             onResize: function($dialog) {
-                var $content = $dialog.find('.js-dialog-content');
+                var $content = $dialog.find('.proto-dialog-content');
                 $dialog.find('.video-container iframe, .video-container object, .video-container embed').each(function () {
                     $(this).css({
                         'width': $content.width() + 'px',
@@ -255,7 +251,7 @@
 
             return this.each(function() {
                 var $this = $(this);
-                var _data = $this.data('jsPlayer');
+                var _data = $this.data('protoPlayer');
 
                 // If the plugin hasn't been initialized yet
                 if (!_data) {
@@ -268,18 +264,18 @@
                         controller: _controller
                     };
                 } else {
-                    _data = $(this).data('jsPlayer');
+                    _data = $(this).data('protoPlayer');
                     _data['settings'] = _settings;
                     _data['controller'].settings(_settings);
                 }
 
-                $(this).data('jsPlayer', _data);
+                $(this).data('protoPlayer', _data);
             });
         },
         open: function(_settings) {
             return this.each(function() {
                 var $this = $(this);
-                var _data = $this.data('jsPlayer');
+                var _data = $this.data('protoPlayer');
                 // If the plugin hasn't been initialized yet
                 if (_data) {
                     // search for elements
@@ -291,7 +287,7 @@
         close: function( ) {
             return this.each(function() {
                 var $this = $(this);
-                var _data = $this.data('jsPlayer');
+                var _data = $this.data('protoPlayer');
 
                 // If the plugin hasn't been initialized yet
                 if (_data) {
@@ -304,14 +300,14 @@
         settings: function(_settings) {
             return this.each(function() {
                 var $this = $(this);
-                var _data = $this.data('jsPlayer');
+                var _data = $this.data('protoPlayer');
 
                 // If the plugin hasn't been initialized yet
                 if (_data) {
                     // search for elements
                     var _controller = _data['controller'];
                     _data['settings'] = _settings;
-                    $this.data('jsPlayer', _data);
+                    $this.data('protoPlayer', _data);
                     _controller.settings(_settings);
                 }
             });
@@ -319,7 +315,7 @@
         render: function(_video, _playerParams) {
             return this.each(function() {
                 var $this = $(this);
-                var _data = $this.data('jsPlayer');
+                var _data = $this.data('protoPlayer');
                 // If the plugin hasn't been initialized yet
                 if (_data) {
                     // search for elements
@@ -331,16 +327,16 @@
 
     };
 
-    $.fn.jsPlayer = function(method) {
+    $.fn.protoPlayer = function(method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
         } else {
-            $.error('Method ' + method + ' does not exist on jQuery.jsPlayer');
+            $.error('Method ' + method + ' does not exist on jQuery.protoPlayer');
         }
     };
 
-    $.fn.jsPlayer.players = availablePlayers;
+    $.fn.protoPlayer.players = availablePlayers;
 
 })(jQuery); // pass the jQuery object to this function
