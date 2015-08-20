@@ -192,18 +192,18 @@
         };
 
         this.open = function() {
-            $target.jsDialog('open');
+            $target.protoDialog('open');
         };
 
         this.close = function() {
-            $target.jsDialog('close');
+            $target.protoDialog('close');
         };
 
         var _this = this;
 
         this.settings(_settings);
 
-        $target.jsDialog({
+        $target.protoDialog({
             onInit: function($dialog) {
                 $dialog.addClass('proto-player-overlay');
                 _instance.onInit.call($target, $dialog, _instance)
